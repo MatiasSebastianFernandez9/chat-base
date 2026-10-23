@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/chat-mvc-base.iml" filepath="$PROJECT_DIR$/chat-mvc-base.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chat-base.iml" filepath="$PROJECT_DIR$/chat-base.iml" />
     </modules>
   </component>
 </project>
