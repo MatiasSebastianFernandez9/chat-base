@@ -1,0 +1,5 @@
+no poner muestra de datos fuera del modelo
+"cualquier cosa que no puedo testear es mala decision de diseño"
+la clase principal es la clase "observada"
+A partir de las interfaces podemos crear una clase abstracta que contenga las funciones a utilizar
+    Se puede hacer por que el patron del Observable se repite a lo largo del script??

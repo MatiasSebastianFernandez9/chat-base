@@ -1,9 +1,14 @@
 package ar.edu.unlu.chatmvc.modelo;
 
+import ar.edu.unlu.chatmvc.observer.IObservable;
+import ar.edu.unlu.chatmvc.observer.IObservador;
+import ar.edu.unlu.chatmvc.observer.Observable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class Chat {
+public class Chat extends Observable {
     private HashMap<Integer, Usuario> usuarios;
     private ArrayList<Mensaje> mensajes;
 
@@ -16,6 +21,7 @@ public class Chat {
         Usuario u = new Usuario(nombre);
         this.usuarios.put(u.getId(), u);
         this.enviarMensajeDelSistema("Usuario " + nombre + " conectado");
+        notificarObservador(Eventos.CAMBIO_LISTA_USUARIOS);
         return u;
     }
 
@@ -24,6 +30,7 @@ public class Chat {
         if (usuario != null) {
             this.usuarios.remove(usuarioId);
             this.enviarMensajeDelSistema("Usuario " + usuario.getNombre() + " desconectado");
+            notificarObservador(Eventos.CAMBIO_LISTA_USUARIOS);
         }
     }
 
@@ -40,12 +47,16 @@ public class Chat {
     public void enviarMensaje(String texto, Usuario usuario) {
         this.mensajes.add(new Mensaje(texto, usuario));
         // ANTIPATRÓN: El modelo acoplado directamente a la salida por consola
-        System.out.println("[" + usuario.getNombre() + "]: " + texto);
+        //System.out.println("[" + usuario.getNombre() + "]: " + texto);
+        this.notificarObservador(Eventos.NUEVO_MENSAJE);
     }
 
     public void enviarMensajeDelSistema(String texto) {
         this.mensajes.add(new Mensaje(texto));
         // ANTIPATRÓN: El modelo acoplado directamente a la salida por consola
-        System.out.println("[Sistema]: " + texto);
+        //System.out.println("[Sistema]: " + texto);
+        this.notificarObservador(Eventos.NUEVO_MENSAJE);
     }
 }
+
+
