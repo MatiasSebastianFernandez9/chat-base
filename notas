@@ -3,3 +3,9 @@ no poner muestra de datos fuera del modelo
 la clase principal es la clase "observada"
 A partir de las interfaces podemos crear una clase abstracta que contenga las funciones a utilizar
     Se puede hacer por que el patron del Observable se repite a lo largo del script??
+principio de segregacion de interfaces:
+    Utilizamos las interfaces para restringir la api de forma focalizada
+    para que las capas superiores del programa no puedan modificar a su antojo
+    A traves de una interfaces enviamos un objeto de solo lectura
+
+La vista muestra cosas, con interfaz grafica solo recibe
